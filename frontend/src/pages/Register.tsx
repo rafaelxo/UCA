@@ -6,11 +6,11 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [cellphone, setCellphone] = useState("");
-  const [loading, setLoading] = useState(false);
 
+  const { register, loading } = useAuthContext();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Registrando...");
+    await register(email, password, name, cellphone);
   };
 
   return (
