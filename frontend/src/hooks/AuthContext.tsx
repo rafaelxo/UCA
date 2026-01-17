@@ -8,6 +8,12 @@ type AuthContextType = {
   token: string | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (
+    email: string,
+    password: string,
+    name: string,
+    cellphone: string,
+  ) => Promise<void>;
   logout: () => void;
 };
 
