@@ -1,2 +1,3 @@
 com\uca\Application.class
+com\uca\controller\HealthController.class
 com\uca\model\User.class
