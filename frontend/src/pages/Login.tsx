@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../hooks";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -42,6 +43,12 @@ export default function Login() {
           >
             {loading ? "Entrando..." : "Entrar"}
           </button>
+          <p className="text-center mt-4 text-gray-600">
+            Não tem conta?{" "}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Registre-se
+            </Link>
+          </p>
         </form>
       </div>
     </div>

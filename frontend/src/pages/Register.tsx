@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../hooks";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -55,6 +56,12 @@ export default function Register() {
           >
             {loading ? "Registrando..." : "Registrar"}
           </button>
+          <p className="text-center mt-4 text-gray-600">
+            Já tem conta?{" "}
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Faça login
+            </Link>
+          </p>
         </form>
       </div>
     </div>
