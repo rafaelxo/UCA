@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Property } from "../types";
+import type { Property, PropertyCreate } from "../types";
 
 const API_URL = "http://localhost:3000/api";
 
@@ -31,7 +31,7 @@ export const propertyService = {
     return api.get(`/properties/${id}`);
   },
 
-  create: (property: Property) => {
+  create: (property: PropertyCreate) => {
     return api.post("/properties", property);
   },
 
