@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PropertyList from "./pages/PropertyList";
+import PropertyCreate from "./pages/PropertyCreate";
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <PropertyList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/properties/create"
+            element={
+              <ProtectedRoute>
+                <PropertyCreate />
               </ProtectedRoute>
             }
           />
