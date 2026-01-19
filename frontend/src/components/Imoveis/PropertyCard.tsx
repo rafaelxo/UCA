@@ -1,12 +1,18 @@
 import type { Property } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 type PropertyCardProps = {
   property: Property;
 };
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+    <div
+      onClick={() => navigate(`/properties/${property.id}`)}
+      className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow cursor-pointer"
+    >
       <h2 className="text-xl font-bold mb-2">{property.title}</h2>
       <p className="text-gray-600 mb-2">{property.address}</p>
       <p className="text-2xl font-bold text-blue-600 mb-4">
