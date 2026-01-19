@@ -149,6 +149,129 @@ export default function PropertyCreate() {
             </div>
           </div>
 
+          {/* Metragem e Garagem */}
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Metragem (m²)
+              </label>
+              <input
+                type="number"
+                name="squareMeters"
+                value={formData.squareMeters}
+                onChange={handleChange}
+                required
+                min="0"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Vagas de Garagem
+              </label>
+              <input
+                type="number"
+                name="garage"
+                value={formData.garage}
+                onChange={handleChange}
+                required
+                min="0"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          {/* Tipo */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Tipo</label>
+            <select
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            >
+              <option value="house">Casa</option>
+              <option value="apartment">Apartamento</option>
+              <option value="land">Terreno</option>
+            </select>
+          </div>
+
+          {/* Descrição */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Descrição</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+              rows={4}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          {/* Amenidades (Checkboxes) */}
+          <div>
+            <label className="block text-sm font-medium mb-2">Amenidades</label>
+            <div className="grid grid-cols-2 gap-3">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="pool"
+                  checked={formData.pool}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+                <span>Piscina</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="recreationArea"
+                  checked={formData.recreationArea}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+                <span>Área de Lazer</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="barbecue"
+                  checked={formData.barbecue}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+                <span>Churrasqueira</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="airConditioning"
+                  checked={formData.airConditioning}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+                <span>Ar Condicionado</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="furnished"
+                  checked={formData.furnished}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+                <span>Mobiliado</span>
+              </label>
+            </div>
+          </div>
+
           {/* Botões */}
           <div className="flex gap-4 pt-4">
             <button
