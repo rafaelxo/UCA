@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Property, PropertyCreate } from "../types";
+import type { PropertyCreate } from "../types";
 
 const API_URL = "http://localhost:3000/api";
 
@@ -35,7 +35,7 @@ export const propertyService = {
     return api.post("/properties", property);
   },
 
-  update: (id: number, property: Property) => {
+  update: (id: number, property: PropertyCreate) => {
     return api.put(`/properties/${id}`, property);
   },
 
