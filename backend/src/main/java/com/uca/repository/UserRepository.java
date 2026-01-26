@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import PROJECTS.UCA.backend.src.main.java.com.uca.model.User;
+import com.uca.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
