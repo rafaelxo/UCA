@@ -28,6 +28,19 @@ export default function PropertyDetail() {
     }
   };
 
+  const handleDelete = async () => {
+    if (!id || !confirm("Tem certeza que deseja deletar este imóvel?")) return;
+    
+    try {
+      await propertyService.delete(Number(id));
+      alert("Imóvel deletado com sucesso!");
+      navigate("/properties");
+    } catch (error) {
+      console.error("Erro ao deletar imóvel:", error);
+      alert("Erro ao deletar imóvel!");
+    }
+  };
+
   if (loading) {
     return <div className="min-h-screen bg-gray-100 p-8">Carregando...</div>;
   }
@@ -110,6 +123,21 @@ export default function PropertyDetail() {
               </span>
             )}
           </div>
+        </div>
+
+        <div className="flex gap-4 mt-8">
+          <button
+            onClick={() => navigate(`/properties/edit/${id}`)}
+            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+          >
+            ✏️ Editar
+          </button>
+          <button
+            onClick={handleDelete}
+            className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
+          >
+            🗑️ Deletar
+          </button>
         </div>
       </div>
     </div>
