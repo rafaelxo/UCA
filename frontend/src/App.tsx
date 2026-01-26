@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import PropertyList from "./pages/PropertyList";
 import PropertyCreate from "./pages/PropertyCreate";
 import PropertyDetail from "./pages/PropertyDetail";
+import PropertyEdit from "./pages/PropertyEdit";
 
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <PropertyDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/properties/edit/:id"
+            element={
+              <ProtectedRoute>
+                <PropertyEdit />
               </ProtectedRoute>
             }
           />
