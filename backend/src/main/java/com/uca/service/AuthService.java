@@ -1,14 +1,18 @@
 package com.uca.service;
 
-import com.uca.dto.*;
-import com.uca.model.User;
-import com.uca.repository.UserRepository;
-import com.uca.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.uca.dto.AuthResponse;
+import com.uca.dto.LoginRequest;
+import com.uca.dto.RegisterRequest;
+import com.uca.dto.UserDTO;
+import com.uca.model.User;
+import com.uca.repository.UserRepository;
+import com.uca.security.JwtTokenProvider;
 
 @Service
 public class AuthService {
@@ -48,8 +52,7 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.email(), request.password())
-        );
+                new UsernamePasswordAuthenticationToken(request.email(), request.password()));
 
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -63,12 +66,11 @@ public class AuthService {
 
     private UserDTO convertToDTO(User user) {
         return new UserDTO(
-            user.getId(),
-            user.getEmail(),
-            user.getName(),
-            user.getCellphone(),
-            user.getUserType(),
-            user.getCreatedAt()
-        );
+                user.getId(),
+                user.getEmail(),
+                user.getName(),
+                user.getCellphone(),
+                user.getUserType(),
+                user.getCreatedAt());
     }
 }
