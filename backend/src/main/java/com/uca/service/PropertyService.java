@@ -1,17 +1,18 @@
 package com.uca.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
 import com.uca.dto.PropertyCreateRequest;
 import com.uca.dto.PropertyDTO;
 import com.uca.model.Property;
 import com.uca.model.User;
 import com.uca.repository.PropertyRepository;
 import com.uca.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -98,24 +99,23 @@ public class PropertyService {
 
     private PropertyDTO convertToDTO(Property property) {
         return new PropertyDTO(
-            property.getId(),
-            property.getTitle(),
-            property.getAddress(),
-            property.getPrice(),
-            property.getBedrooms(),
-            property.getBathrooms(),
-            property.getSquareMeters(),
-            property.getFloors(),
-            property.getType(),
-            property.getDescription(),
-            property.getPool(),
-            property.getGarage(),
-            property.getRecreationArea(),
-            property.getBarbecue(),
-            property.getAirConditioning(),
-            property.getFurnished(),
-            property.getImages(),
-            property.getCreatedAt()
-        );
+                property.getId(),
+                property.getTitle(),
+                property.getAddress(),
+                property.getPrice(),
+                property.getBedrooms(),
+                property.getBathrooms(),
+                property.getSquareMeters(),
+                property.getFloors(),
+                property.getType(),
+                property.getDescription(),
+                property.getPool(),
+                property.getGarage(),
+                property.getRecreationArea(),
+                property.getBarbecue(),
+                property.getAirConditioning(),
+                property.getFurnished(),
+                property.getImages(),
+                property.getCreatedAt());
     }
 }
