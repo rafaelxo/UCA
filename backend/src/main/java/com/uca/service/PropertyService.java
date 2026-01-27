@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.uca.dto.PropertyCreateRequest;
@@ -38,9 +37,10 @@ public class PropertyService {
         return convertToDTO(property);
     }
 
-    public PropertyDTO createProperty(PropertyCreateRequest request) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByEmail(email)
+    public PropertyDTO createProperty(PropertyCreateRequest request, Long ownerId) {
+        if (ownerId == null)
+            throw new IllegalArgumentException("Owner ID cannot be null");
+        User user = userRepository.findById(ownerId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Property property = new Property();
@@ -67,12 +67,16 @@ public class PropertyService {
         return convertToDTO(property);
     }
 
-    public PropertyDTO updateProperty(Long id, PropertyCreateRequest request) {
+    public PropertyDTO updateProperty(Long id, PropertyCreateRequest request, Long ownerId) {
         if (id == null)
-            throw new IllegalArgumentException("ID cannot be null"); // Proteção
+            throw new IllegalArgumentException("ID cannot be null");
 
         Property property = propertyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Property not found"));
+
+        if (!property.getOwner().getId().equals(ownerId)) {
+            throw new RuntimeException("Unauthorized");
+        }
 
         property.setTitle(request.title());
         property.setAddress(request.address());
