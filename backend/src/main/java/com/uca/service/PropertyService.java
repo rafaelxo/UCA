@@ -30,6 +30,9 @@ public class PropertyService {
     }
 
     public PropertyDTO getPropertyById(Long id) {
+        if (id == null)
+            throw new IllegalArgumentException("ID cannot be null"); // Proteção
+
         Property property = propertyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Property not found"));
         return convertToDTO(property);
@@ -65,6 +68,9 @@ public class PropertyService {
     }
 
     public PropertyDTO updateProperty(Long id, PropertyCreateRequest request) {
+        if (id == null)
+            throw new IllegalArgumentException("ID cannot be null"); // Proteção
+
         Property property = propertyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Property not found"));
 
@@ -86,14 +92,14 @@ public class PropertyService {
         property.setImages(request.images());
 
         property = propertyRepository.save(property);
-
         return convertToDTO(property);
     }
 
     public void deleteProperty(Long id) {
-        if (!propertyRepository.existsById(id)) {
+        if (id == null)
+            throw new IllegalArgumentException("ID cannot be null");
+        if (!propertyRepository.existsById(id))
             throw new RuntimeException("Property not found");
-        }
         propertyRepository.deleteById(id);
     }
 
