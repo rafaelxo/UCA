@@ -7,15 +7,9 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "properties")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Property {
 
     @Id
@@ -79,4 +73,64 @@ public class Property {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User owner;
+
+    public Property() {}
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
+
+    public Integer getBedrooms() { return bedrooms; }
+    public void setBedrooms(Integer bedrooms) { this.bedrooms = bedrooms; }
+
+    public Integer getBathrooms() { return bathrooms; }
+    public void setBathrooms(Integer bathrooms) { this.bathrooms = bathrooms; }
+
+    public Double getSquareMeters() { return squareMeters; }
+    public void setSquareMeters(Double squareMeters) { this.squareMeters = squareMeters; }
+
+    public Integer getFloors() { return floors; }
+    public void setFloors(Integer floors) { this.floors = floors; }
+
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Boolean getPool() { return pool; }
+    public void setPool(Boolean pool) { this.pool = pool; }
+
+    public Integer getGarage() { return garage; }
+    public void setGarage(Integer garage) { this.garage = garage; }
+
+    public Boolean getRecreationArea() { return recreationArea; }
+    public void setRecreationArea(Boolean recreationArea) { this.recreationArea = recreationArea; }
+
+    public Boolean getBarbecue() { return barbecue; }
+    public void setBarbecue(Boolean barbecue) { this.barbecue = barbecue; }
+
+    public Boolean getAirConditioning() { return airConditioning; }
+    public void setAirConditioning(Boolean airConditioning) { this.airConditioning = airConditioning; }
+
+    public Boolean getFurnished() { return furnished; }
+    public void setFurnished(Boolean furnished) { this.furnished = furnished; }
+
+    public List<String> getImages() { return images; }
+    public void setImages(List<String> images) { this.images = images; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public User getOwner() { return owner; }
+    public void setOwner(User owner) { this.owner = owner; }
 }
