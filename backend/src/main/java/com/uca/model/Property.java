@@ -6,7 +6,17 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "properties")
@@ -74,63 +84,159 @@ public class Property {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    public Property() {}
+    public Property() {
+    }
 
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public String getTitle() {
+        return title;
+    }
 
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public Integer getBedrooms() { return bedrooms; }
-    public void setBedrooms(Integer bedrooms) { this.bedrooms = bedrooms; }
+    public String getAddress() {
+        return address;
+    }
 
-    public Integer getBathrooms() { return bathrooms; }
-    public void setBathrooms(Integer bathrooms) { this.bathrooms = bathrooms; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public Double getSquareMeters() { return squareMeters; }
-    public void setSquareMeters(Double squareMeters) { this.squareMeters = squareMeters; }
+    public Double getPrice() {
+        return price;
+    }
 
-    public Integer getFloors() { return floors; }
-    public void setFloors(Integer floors) { this.floors = floors; }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public Integer getBedrooms() {
+        return bedrooms;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setBedrooms(Integer bedrooms) {
+        this.bedrooms = bedrooms;
+    }
 
-    public Boolean getPool() { return pool; }
-    public void setPool(Boolean pool) { this.pool = pool; }
+    public Integer getBathrooms() {
+        return bathrooms;
+    }
 
-    public Integer getGarage() { return garage; }
-    public void setGarage(Integer garage) { this.garage = garage; }
+    public void setBathrooms(Integer bathrooms) {
+        this.bathrooms = bathrooms;
+    }
 
-    public Boolean getRecreationArea() { return recreationArea; }
-    public void setRecreationArea(Boolean recreationArea) { this.recreationArea = recreationArea; }
+    public Double getSquareMeters() {
+        return squareMeters;
+    }
 
-    public Boolean getBarbecue() { return barbecue; }
-    public void setBarbecue(Boolean barbecue) { this.barbecue = barbecue; }
+    public void setSquareMeters(Double squareMeters) {
+        this.squareMeters = squareMeters;
+    }
 
-    public Boolean getAirConditioning() { return airConditioning; }
-    public void setAirConditioning(Boolean airConditioning) { this.airConditioning = airConditioning; }
+    public Integer getFloors() {
+        return floors;
+    }
 
-    public Boolean getFurnished() { return furnished; }
-    public void setFurnished(Boolean furnished) { this.furnished = furnished; }
+    public void setFloors(Integer floors) {
+        this.floors = floors;
+    }
 
-    public List<String> getImages() { return images; }
-    public void setImages(List<String> images) { this.images = images; }
+    public String getType() {
+        return type;
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setType(String type) {
+        this.type = type;
+    }
 
-    public User getOwner() { return owner; }
-    public void setOwner(User owner) { this.owner = owner; }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getPool() {
+        return pool;
+    }
+
+    public void setPool(Boolean pool) {
+        this.pool = pool;
+    }
+
+    public Integer getGarage() {
+        return garage;
+    }
+
+    public void setGarage(Integer garage) {
+        this.garage = garage;
+    }
+
+    public Boolean getRecreationArea() {
+        return recreationArea;
+    }
+
+    public void setRecreationArea(Boolean recreationArea) {
+        this.recreationArea = recreationArea;
+    }
+
+    public Boolean getBarbecue() {
+        return barbecue;
+    }
+
+    public void setBarbecue(Boolean barbecue) {
+        this.barbecue = barbecue;
+    }
+
+    public Boolean getAirConditioning() {
+        return airConditioning;
+    }
+
+    public void setAirConditioning(Boolean airConditioning) {
+        this.airConditioning = airConditioning;
+    }
+
+    public Boolean getFurnished() {
+        return furnished;
+    }
+
+    public void setFurnished(Boolean furnished) {
+        this.furnished = furnished;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }
